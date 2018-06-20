@@ -4,21 +4,26 @@ using UnityEngine;
 
 public class MirrorCameraTest : MonoBehaviour
 {
-    public Transform targetPlayer;
-    public GameObject playerDirection;
-    public GameObject cameraDirection;
+    
+    public Transform targetPlayer;    // 映す対象のTransform    
+    public Transform playerDir;       // targetPlayerの方向を向くTransform     
+    public GameObject mirrorCamera;   // 鏡のカメラ
 
     void Update()
     {
-        playerDirection.transform.LookAt(targetPlayer);
-        //print(playerDirection.transform.rotation);
+        Reflect();        
+    }
 
-        cameraDirection.transform.rotation = new Quaternion(
-            0, playerDirection.transform.rotation.y * -1, 0, playerDirection.transform.rotation.w);
+    // targetPlayer視点の鏡に映像を映す処理
+    void Reflect()
+    {
+        // LookAtでtargetPlayerの方向を見る
+        playerDir.transform.LookAt(targetPlayer);
+        // print(playerDirection.transform.rotation);
 
-        playerDirection.transform.rotation = new Quaternion(
-            0, Mathf.Clamp(playerDirection.transform.rotation.y, -90, 90), 0, playerDirection.transform.rotation.w);
-
+        // mirrorCameraのrotationをplayerDirとは対称の方向に向ける
+        mirrorCamera.transform.rotation = new Quaternion(
+            0, playerDir.transform.rotation.y * -1, 0, playerDir.transform.rotation.w);
     }
 
 }

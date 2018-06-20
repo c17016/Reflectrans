@@ -6,11 +6,11 @@ public class mirrorTest : MonoBehaviour
 {
     public Transform targetPlayer;
     public GameObject playerDirection;
-    public GameObject cameraDirection;
+    //public GameObject cameraDirection;
 
     void Update()
     {
-        Vector3 targetDir = targetPlayer.position - transform.position;
+        //Vector3 targetDir = targetPlayer.position - transform.position;
 
         //playerDirection.transform.rotation = new Quaternion(0, targetDir.y, 0, 0);
 
@@ -35,11 +35,11 @@ public class mirrorTest : MonoBehaviour
         playerDirection.transform.LookAt(targetPlayer);
         //print(playerDirection.transform.rotation);
 
-        cameraDirection.transform.rotation = new Quaternion(
-            0, playerDirection.transform.rotation.y * -1, 0, playerDirection.transform.rotation.w);
+        //cameraDirection.transform.rotation = new Quaternion(
+        //    0, playerDirection.transform.rotation.y * -1, 0, playerDirection.transform.rotation.w);
 
-        playerDirection.transform.rotation = new Quaternion(
-            0, Mathf.Clamp(playerDirection.transform.rotation.y, -90, 90), 0, playerDirection.transform.rotation.w);
+        //playerDirection.transform.rotation = new Quaternion(
+        //    0, Mathf.Clamp(playerDirection.transform.rotation.y, -90, 90), 0, playerDirection.transform.rotation.w);
 
 
 
